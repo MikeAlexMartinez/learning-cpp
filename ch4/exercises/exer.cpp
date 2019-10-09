@@ -42,6 +42,15 @@ void print_input(double input) {
   cout << "value entered: " << input << "\n";
 }
 
+void test() {
+  double val = 0.0;
+  char unit1 = ' ';
+  char unit2 = ' ';
+
+  cin >> val >> unit1 >> unit2;
+  cout << "entered: number of " << val << " and unit " << unit1 << unit2 << '\n';
+}
+
 double is_smallest(double input, double smallest) {
   if (input < smallest) {
     cout << "the smallest so far\n";
