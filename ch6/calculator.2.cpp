@@ -1,5 +1,7 @@
 #include "../headers/std_lib_facilities.h"
 
+// ==============================================================================
+
 class Token {
   public:
     char kind; // what kind of token
@@ -10,8 +12,11 @@ class Token {
       :kind(ch), value(val) { }
 };
 
+// ==============================================================================
+
 class Token_stream {
   public:
+    Token_stream();        // make a token stream and that reads from cin
     Token get();           // get a token
     void putback(Token t); // put a Token back
   private:
@@ -20,14 +25,12 @@ class Token_stream {
     bool full { false }; // is there a token ni the buffer?
     Token buffer; // here is where we keep a Token and put bak using putback()
 };
-
 void Token_stream::putback(Token t)
 {
   if (full) error("putback() into a full buffer");
   buffer = t; // copy t to buffer
   full = true; // buffer is now full
 }
-
 Token Token_stream::get()
 {
   if (full) {
@@ -57,8 +60,12 @@ Token Token_stream::get()
   }
 }
 
-Token_stream ts;
-double expression();
+// ==============================================================================
+
+Token_stream ts; // declare token stream
+double expression(); // declare expression for ues in primary()
+
+// ==============================================================================
 
 double primary()
 {
@@ -77,6 +84,8 @@ double primary()
       error("primary expected");
   }
 }
+
+// ==============================================================================
 
 double term()
 {
@@ -103,6 +112,8 @@ double term()
   }
 }
 
+// ==============================================================================
+
 double expression()
 {
   double left = term(); // read and evaluate a term
@@ -124,6 +135,8 @@ double expression()
     }
   }
 }
+
+// ==============================================================================
 
 int main()
 {
@@ -155,3 +168,5 @@ int main()
     return 2;
   }
 }
+
+// ==============================================================================
