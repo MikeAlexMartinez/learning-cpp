@@ -34,7 +34,7 @@ void Token_stream::putback(Token t)
 Token Token_stream::get()
 {
   if (full) {
-    full = false
+    full = false;
     return buffer;
   }
 
@@ -44,11 +44,11 @@ Token Token_stream::get()
   switch (ch) {
     case ';':      // for "print"
     case 'q':      // for "quit"
-    case '(': case ')' case '+': case '-': case '*': case '/':
+    case '(': case ')': case '+': case '-': case '*': case '/':
       return Token(ch);       // let each character represent itself
     case '.':
-    case '0': case '1' case '2': case '3': case '4':
-    case '5': case '6' case '7': case '8': case '9':
+    case '0': case '1': case '2': case '3': case '4':
+    case '5': case '6': case '7': case '8': case '9':
     {
       cin.putback(ch);        // put digit back into input stream
       double val;
@@ -79,7 +79,7 @@ double primary()
       return d;
     }
     case '8':
-      return t.value();
+      return t.value;
     default:
       error("primary expected");
   }
@@ -107,6 +107,7 @@ double term()
         break;
       }
       default:
+        ts.putback(t);
         return left;
     }
   }
@@ -153,7 +154,7 @@ int main()
         cout << "=" << val << "\n";
       else
         ts.putback(t);
-      val = expression()
+      val = expression();
     }
     keep_window_open();
   }
