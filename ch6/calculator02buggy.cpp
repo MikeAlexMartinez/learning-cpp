@@ -90,6 +90,7 @@ Token Token_stream::get()
         }
     default:
         error("Bad token");
+        return 0;
     }
 }
 
@@ -119,6 +120,7 @@ double primary()
         return t.value;  // return the number's value
     default:
         error("primary expected");
+        return 0;
     }
 }
 

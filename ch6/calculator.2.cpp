@@ -82,6 +82,7 @@ double primary()
       return t.value;
     default:
       error("primary expected");
+      return 0;
   }
 }
 
@@ -111,6 +112,8 @@ double term()
         return left;
     }
   }
+
+  return 0;
 }
 
 // ==============================================================================
@@ -135,6 +138,7 @@ double expression()
         return left; // finally; no more + or -; return the answer
     }
   }
+  return 0;
 }
 
 // ==============================================================================
